@@ -1,0 +1,20 @@
+{
+  "name": "velopedia",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "feedparser": "^1.1.3",
+    "good": "^6.3.0",
+    "good-console": "^5.0.2",
+    "hapi": "^8.8.0",
+    "request": "^2.59.0",
+    "tumblr": "^0.4.1",
+    "xml2js": "^0.4.9"
+  }
+}
