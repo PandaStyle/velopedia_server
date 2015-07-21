@@ -1,12 +1,12 @@
 var Hapi = require('hapi');
 var Good = require('good');
+var async = require('async');
+var feed = require('feed-read');
+var _ = require('lodash');
+var moment = require('moment');
 
-var FeedParser = require('feedparser')
-var Request = require('request');
 
-var xml2js = require('xml2js');
 var tumblr = require('tumblr');
-
 var rssUrls = require('./modules/rssurls.js')
 
 var oauth = {
@@ -45,35 +45,24 @@ server.route({
     method: 'GET',
     path:'/getnews',
     handler: function (request, reply) {
-        var url = rssUrls[1];
-
-        var req = Request(url),
-            feedparser = new FeedParser();
-
-        req.on('error', function (error) {
-            // handle any request errors
-        });
-        req.on('response', function (res) {
-            var stream = this;
-
-            if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
-
-            stream.pipe(feedparser);
-        });
-
-
-        feedparser.on('error', function(error) {
-            // always handle errors
-        });
-        feedparser.on('readable', function() {
-            // This is where the action is!
-            var stream = this
-                , meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
-                , item;
-
-            while (item = stream.read()) {
-                reply(item);
+        async.map(rssUrls, function (i, callback) {
+            feed(i, callback);
+        }, function (err, result) {
+            if (err) {
+                // Somewhere, something went wrong…
             }
+            var res = _.map(_.flattenDeep(result), function(item){
+                return {
+                    title: item.title,
+                    link: item.link,
+                    date: item.published,
+                    feed: item.feed,
+                    diff: moment.duration(moment().diff(moment(new Date(item.published)))).humanize()
+                }
+            });
+
+            reply(_.sortByOrder(res, function(item) {return new Date(item.date);}, ['desc']));
+
         });
     }
 });
