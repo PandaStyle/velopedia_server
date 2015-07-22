@@ -1,0 +1,372 @@
+
+body {
+    background-color: #f1f1f1;
+    margin-top: 0 !important;
+}
+
+.disable-hover {
+    pointer-events: none;
+}
+
+/*** Header ***/
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    height: 70px;
+    border-bottom: 3px solid rgba(0,0,0,0.3);
+    background-color: #DF6E53;
+}
+header .logo img{
+    height: 70px;
+    vertical-align: middle;
+}
+
+header .icons {
+    display: inline-block;
+}
+
+header .listicon {
+
+}
+
+
+header .logo {
+    font-size: 2em;
+}
+
+header .header-icon {
+    PADDING: 24px 80px 24px 24px;
+    display: inline-block;
+    padding: 24px;
+}
+
+header .downarrow {
+    display: none;
+}
+
+header .downarrow:hover {
+    cursor: pointer;
+    color: #fff;
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+}
+
+
+
+header .header-icon:hover {
+    background-color: #0078A8;
+    color: #fff;
+}
+header .header-icon:hover .downarrow{
+    color: #e4e4e4;
+    display: inline-block;
+}
+header .header-icon:hover .icon-title{
+    margin-right: 80px;
+}
+
+header .buttons {
+    display: inline-block;
+    margin-left: 265px;
+}
+
+header .buttons .icon-title {
+    margin-right: 100px;
+    margin-left: 10px;
+}
+
+.dimmer {
+    z-index: 5;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    background-color: #f1f1f1;
+}
+
+
+/*** Tabs ***/
+.tabs {
+    left: 0;
+    background: rgb(223, 223, 223);
+    position: absolute;
+    top: 47px;
+    width: 100%;
+    z-index: 10;
+}
+
+.tabs .tabs-left,
+.tabs .tabs-right{
+    display: inline-block;
+}
+
+.tabs .tabs-left {
+    width: 400px;
+}
+
+.tabs .tabs-left img{
+    width: 40px
+}
+
+.tabs .tabs-tumblr {
+    display: inline-block;
+    width: 50%;
+}
+
+.tabs .tabs-strava {
+    display: inline-block;
+    width: 49.7%;
+}
+
+
+/*** Left ***/
+.left {
+    position: fixed;
+    width: 400px;
+    top: 90px;
+    left: 0;
+    height: 100%;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+
+.left .news {
+    margin-top: -5px;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 15px;
+    overflow-x: hidden;
+    width: 415px;
+}
+
+.left .header{
+    width: 375px;
+    position: absolute;
+    margin: 0 0 5px 5px;
+    background-color: #FFF;
+    padding: 10px;
+    height: 35px;
+}
+
+.left .header img {
+    height: 28px;
+    width: 28px;
+    vertical-align: text-bottom;
+}
+
+.left .header .txt {
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.left .header .header-icon {
+    cursor: pointer;
+    color: rgb(173, 173, 173);
+    float: right;
+    padding: 11px;
+}
+
+.left .header .header-icon:hover{
+    color: rgb(223, 110, 83);   
+}
+
+.left .header .header-icon:before {
+    font-size: 30px;
+}
+
+.left .header .spinner > div {
+    background-color: #DF6E53;
+
+}
+.left .header .spinner {
+    top: 20px;
+    position: absolute;
+    display: none;
+}
+.cont {
+    border-bottom: 1px solid #e4e4e4;
+    margin: 0px 25px 0px 0px;
+    padding: 10px 25px 10px 10px;
+    background-color: #fff;
+    opacity: 0;
+    -webkit-transform: translate3d(30%,0,0);
+    transform: translate3d(30%,0,0);
+
+    -webkit-transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+
+    margin: 5px;
+    border-bottom: 1px solid rgb(208, 208, 208);
+}
+
+.cont .links {
+    font-size: 14px;
+    color: inherit;
+    text-decoration: none;
+    line-height: 20px;
+    padding-left: 15px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cont .links .title {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cont .links .url,
+.cont .links .time{
+    text-decoration: none;
+    color: grey;
+}
+.cont .links .time {
+    margin-left: 10px;
+}
+
+
+.cont .site {
+    opacity: 0.7;
+    border-radius: 50%;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.cont .site.cyclingNews {
+    background-image: url('../assets/img/cyclingnews.jpg');
+}
+
+.cont .site.cyclingTips {
+    background-image: url('../assets/img/cyclingtips.jpg');
+}
+
+.cont .holder {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cont .image {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+
+/*** Right ***/
+.right {
+    position: relative;
+    margin: 90px 0 90px 400px;
+    max-width: 1520px;
+}
+.right .tumblr {
+    padding-right: 10px;
+    position: relative;
+}
+
+.box {
+    margin: 0 0px 5px 5px;
+    border: 3px solid #fff;
+
+    opacity: 0;
+
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    transform: translateY(100px);
+
+    -webkit-transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.box .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.lay {
+    background-color: rgba(223, 110, 83, 0.95);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.box.item .blogname
+{
+    display: none;
+    opacity: 0;
+    color: white;
+    position: absolute;
+    bottom: 13px;
+    padding-left: 40px;
+    font-size: 16px;
+}
+
+.box.item .notecount {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding: 5px 20px;
+}
+
+
+.box:hover {
+    cursor: pointer;
+}
+
+.box:hover .overlay .lay{
+    opacity: 0.8;
+
+    -webkit-transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.box .nameicon {
+    display: none;
+    opacity: 0;
+    color: white;
+    bottom: 15px;
+    position: absolute;
+}
+
+.box .nameicon:before{
+    font-size: 16px;
+}
+
+.box:hover .nameicon,
+.box:hover .blogname {
+    display: block;
+    opacity: 1;
+}
+
+
+
+
+
+/*** Loading ***/
+.loading {
+    position: absolute;
+    color: #DF6E53;
+    left: 50%;
+    z-index: 100;
+}
+.loading > .spinner > div {
+    background-color: #DF6E53;
+}
+.loading .txt{
+    text-align: center;
+    margin-top: 20px;
+}

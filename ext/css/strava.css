@@ -1,0 +1,94 @@
+/* CSS declarations go here */
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    background-color: #eee;
+}
+.map-item { height: 200px; width: 200px;}
+
+.tile {
+    position: relative;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.tile .desc {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    color: #fff;
+    display: none;
+}
+
+.tile .desc .activity-name {
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+.tile .profile-pic {
+    display: inline-block;
+}
+
+.tile .staticmap {
+    display: block;
+}
+
+.tile .profile-img {
+    border-radius: 50%;
+    margin: 15px 10px 0 0;
+}
+
+.tile .numbers  {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 10px 0 0;
+}
+
+.tile .distance  {
+   font-size: 2em;
+}
+
+.tile .elevation {
+    display: inline-block;
+}
+
+.tile .kudos_count {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.tile .icon {
+    margin: 0 3px;
+}
+
+.tile .icon-mountains{
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.tile .icon-like{
+    font-size: 14px;
+
+}
+
+.tile:hover {
+    background-color: #fc4c02;
+    color: #fff;
+}
+
+.tile:hover img.staticmap {
+    opacity: 0.1;
+}
+
+.tile:hover .desc {
+    display: block;
+}
+

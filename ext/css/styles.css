@@ -1,0 +1,94 @@
+    @charset "UTF-8";
+
+@font-face {
+  font-family: "untitled-font-2";
+  src:url("/assets/fonts/untitled-font-2.eot");
+  src:url("/assets/fonts/untitled-font-2.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/untitled-font-2.woff") format("woff"),
+    url("/assets/fonts/untitled-font-2.ttf") format("truetype"),
+    url("/assets/fonts/untitled-font-2.svg#untitled-font-2") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('/assets/fonts/icomoon.eot?-m6mow4');
+    src:url('/assets/fonts/icomoon.eot?#iefix-m6mow4') format('embedded-opentype'),
+    url('/assets/fonts/icomoon.woff?-m6mow4') format('woff'),
+    url('/assets/fonts/icomoon.ttf?-m6mow4') format('truetype'),
+    url('/assets/fonts/icomoon.svg?-m6mow4#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Flaticon";
+    src: url("/assets/fonts/flaticon.eot");
+    src: url("/assets/fonts/flaticon.eot#iefix") format("embedded-opentype"),
+    url("/assets/fonts/flaticon.woff") format("woff"),
+    url("/assets/fonts/flaticon.ttf") format("truetype"),
+    url("/assets/fonts/flaticon.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-size: 20px;
+    font-style: normal;
+}
+
+
+[data-icon]:before {
+  font-family: "untitled-font-2" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "untitled-font-2" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-like:before {
+  content: "b";
+}
+.icon-mountains:before {
+  content: "p";
+}
+.icon-like-1:before {
+  content: "q";
+}
+
+
+.icon-tumblr:before {
+    content: "\e600";
+}
+.icon-tumblr2:before {
+    content: "\e601";
+}
+.icon-tumblr3:before {
+    content: "\e602";
+}
+
+
+.flaticon-swap3:before {
+      content: "\e000";
+}

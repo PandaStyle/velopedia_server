@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>Velopedia Chrome extension</title>
+    <link rel="stylesheet" href="css/lib/normalize.css"/>
+    <link rel="stylesheet" href="css/lib/salvattore.css"/>
+    <link rel="stylesheet" href="css/lib/spinner.css"/>
+    <link rel="stylesheet" href="css/lib/cs-select.css"/>
+    <link rel="stylesheet" href="css/lib/cs-skin-border.css"/>
+    <link rel="stylesheet" href="css/newicons.css"/>
+    <link rel="stylesheet" href="css/velopedia.css"/>
+    <link rel='stylesheet' href='css/lib/nprogress.css'/>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <script src="js/lib/jquery-2.1.1.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/salvattore.js"></script>
+    <script src="js/lib/imagesloaded.pkgd.min.js"></script>
+    <script src="js/lib/jquery.scrollstop.js"></script>
+    <script src="js/lib/classie.js"></script>
+    <script src="js/lib/selectFx.js"></script>
+
+
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo"><img src="assets/img/Velopedia-logo-final-w.png" alt=""/></a>
+    </div>
+</header>
+<div class="dimmer"></div>
+
+<div class="left">
+
+    <div class="news"></div>
+</div>
+
+
+<div class="right">
+    <div class="tumblr" id="container" data-columns></div>
+
+    <div class="loading">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+
+    </div>
+</div>
+
+<script src='js/lib/nprogress.js'></script>
+<script src="js/index.js"></script>
+</body>
+</html>
+

@@ -73,6 +73,16 @@ server.route({
     }
 });
 
+server.route({
+    method: 'GET',
+    path:'/ext/{param*}',
+    handler: {
+        directory: {
+            path: 'ext'
+        }
+    }
+});
+
 
 
 server.register({
