@@ -41,8 +41,29 @@ server.route({
             if (error) {
                 throw new Error(error);
             }
-            reply( response);
+            //_.uniq(response.posts,)
+
+           // _.map(arr, function(o) { return _.pick(o, 'q'); });
+
+            var unique  = _.uniq(response.posts,  'reblog_key');
+            var reduced = _.map(unique,
+                function(o) {
+                    return _.pick(o, [
+                        'blog_name',
+                        'id',
+                        'post_url',
+                        'date',
+                        'reblog_key',
+                        'note_count',
+                        'photos']);
+                });
+
+
+            console.log(" --------------- ", reduced.length);
+            reply( reduced);
         });
+
+
     }
 });
 

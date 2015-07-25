@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var
     //serverUrl = "http://velopedia.meteor.com/getposts",
-    //serverUrl = "http://localhost:8000",
-    serverUrl = "http://velopedia-dev.elasticbeanstalk.com",
+    serverUrl = "http://localhost:8081",
+    //serverUrl = "http://velopedia-dev.elasticbeanstalk.com",
 
     getPostTriggered = true,
     smallestColumnOffset,
@@ -125,12 +125,24 @@ function getPosts(o){
 
     $.get( serverUrl + "/getposts/" + o)
         .fail(function(err){
-            console.log(error);
+            console.log(err);
         })
         .done(function( results ) {
-            var results = results.posts;
-            console.log(results);
+
             console.log(results.length + ' image with offset: ' + o + ' in ' + ((new Date().getTime()) - (postTime.getTime())) + ' ms');
+
+            var originalLenght  = results.length;
+
+            var uniqueList = _.uniq(results, function(item, key, a) {
+                return item.reblog_key;
+            });
+
+            var newLength = uniqueList.length;
+
+            if(originalLenght != newLength){
+                console.log('duplicate, new length: ', newLength);
+            }
+
 
             if(o == 0){
                 salvattore.register_grid($('.tumblr')[0]);
@@ -150,7 +162,8 @@ function getPosts(o){
                     var url = _.where(results[i].photos[0].alt_sizes, {width: 399})[0].url;
                 } else {
                     console.log("Image doesn't have 400 or 399 width ", results[i]);
-                    continue;
+                    var url = results[i].photos[0].alt_sizes[0].url;
+                    console.log("Using width ", results[i].photos[0].alt_sizes[0]);
                 }
 
                 var item = $('<div class="box item">\
@@ -164,8 +177,6 @@ function getPosts(o){
                 item.imagesLoaded()
                     .done(function(c,b){
 
-                        console.log(loaded++);
-                        console.log($(c.elements[0]).find('img').attr('src'));
                         salvattore.append_elements($('.tumblr')[0], [c.elements[0]]);
 
                         var delay = DELAYVALUE * counter;
@@ -176,7 +187,7 @@ function getPosts(o){
 
                         counter++;
                         NProgress.inc();
-                        if(counter == postItemCount){
+                        if(counter == results.length){
                             onFinish();
                         }
                     })
