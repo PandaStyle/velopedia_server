@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Flaticon";
-    src: url("/assets/newicons/flaticon.eot");
-    src: url("/assets/newicons/flaticon.eot#iefix") format("embedded-opentype"),
-    url("/assets/newicons/flaticon.woff") format("woff"),
-    url("/assets/newicons/flaticon.ttf") format("truetype"),
-    url("/assets/newicons/flaticon.svg") format("svg");
+    src: url("../assets/newicons/flaticon.eot");
+    src: url("../assets/newicons/flaticon.eot#iefix") format("embedded-opentype"),
+    url("../assets/newicons/flaticon.woff") format("woff"),
+    url("../assets/newicons/flaticon.ttf") format("truetype"),
+    url("../assets/newicons/flaticon.svg") format("svg");
     font-weight: normal;
     font-style: normal;
 }

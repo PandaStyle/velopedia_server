@@ -221,6 +221,7 @@ header .buttons .icon-title {
 .cont .links .time{
     text-decoration: none;
     color: grey;
+    font-size: 14px;
 }
 .cont .links .time {
     margin-left: 10px;
