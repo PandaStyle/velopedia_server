@@ -95,7 +95,7 @@ function getNews(){
                     </div>\
                     <div class="links">\
                                     <a class="title" href="'+ res[i].link +'">'+ res[i].title +'</a>\
-                                    <div>\
+                                    <div class="meta">\
                                     <a class="url" href="'+ res[i].link +'">' + getNewsInfo(res[i].feed.name)[1] + '</a> \
                                     <span class="time">' + res[i].diff + ' ago</span>\
                                     </div>\
