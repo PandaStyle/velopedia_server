@@ -35,35 +35,16 @@ server.connection({
 
 server.route({
     method: 'GET',
-    path:'/getposts/{offset}',
+    path:'/getposts/{offset}/{size}',
     handler: function (request, reply) {
-        user.dashboard({offset: request.params.offset, limit: 20, type: 'photo' }, function (error, response) {
+        user.dashboard({offset: request.params.offset, limit: request.params.size, type: 'photo' }, function (error, response) {
             if (error) {
                 throw new Error(error);
             }
-            //_.uniq(response.posts,)
 
-           // _.map(arr, function(o) { return _.pick(o, 'q'); });
-
-            var unique  = _.uniq(response.posts,  'reblog_key');
-            var reduced = _.map(unique,
-                function(o) {
-                    return _.pick(o, [
-                        'blog_name',
-                        'id',
-                        'post_url',
-                        'date',
-                        'reblog_key',
-                        'note_count',
-                        'photos']);
-                });
-
-
-            console.log(" --------------- ", reduced.length);
-            reply( reduced);
+            var u = _.uniq(response.posts, 'reblog_key')
+            reply(u);
         });
-
-
     }
 });
 

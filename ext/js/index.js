@@ -38,7 +38,7 @@ var
 
     getPostTriggered = true,
     smallestColumnOffset,
-    postItemCount = 20,
+    postItemCount = 40,
     a = new Date(),
     postIds = [],
 
@@ -93,7 +93,7 @@ function getNews(){
                     </div>\
                     <div class="links">\
                                     <a class="title" href="'+ res[i].link +'">'+ res[i].title +'</a>\
-                                    <div>\
+                                    <div class="meta">\
                                     <a class="url" href="'+ res[i].link +'">' + getNewsInfo(res[i].feed.name)[1] + '</a> \
                                     <span class="time">' + res[i].diff + ' ago</span>\
                                     </div>\
@@ -123,26 +123,12 @@ function getNews(){
 function getPosts(o){
     var postTime = new Date();
 
-    $.get( serverUrl + "/getposts/" + o)
+    $.get( serverUrl + "/getposts/" + o + "/" + postItemCount)
         .fail(function(err){
             console.log(err);
         })
         .done(function( results ) {
-
             console.log(results.length + ' image with offset: ' + o + ' in ' + ((new Date().getTime()) - (postTime.getTime())) + ' ms');
-
-            var originalLenght  = results.length;
-
-            var uniqueList = _.uniq(results, function(item, key, a) {
-                return item.reblog_key;
-            });
-
-            var newLength = uniqueList.length;
-
-            if(originalLenght != newLength){
-                console.log('duplicate, new length: ', newLength);
-            }
-
 
             if(o == 0){
                 salvattore.register_grid($('.tumblr')[0]);
@@ -161,9 +147,8 @@ function getPosts(o){
                 } else if(_.where(results[i].photos[0].alt_sizes, {width: 399}).length>0){
                     var url = _.where(results[i].photos[0].alt_sizes, {width: 399})[0].url;
                 } else {
-                    console.log("Image doesn't have 400 or 399 width ", results[i]);
+                    console.log("Image doesn't have 400 or 399 width", results[i], " using size " + results[i].photos[0].alt_sizes[0].width);
                     var url = results[i].photos[0].alt_sizes[0].url;
-                    console.log("Using width ", results[i].photos[0].alt_sizes[0]);
                 }
 
                 var item = $('<div class="box item">\
@@ -176,7 +161,6 @@ function getPosts(o){
 
                 item.imagesLoaded()
                     .done(function(c,b){
-
                         salvattore.append_elements($('.tumblr')[0], [c.elements[0]]);
 
                         var delay = DELAYVALUE * counter;
@@ -194,6 +178,9 @@ function getPosts(o){
                     .fail (function( instance ) {
                         console.log('imagesLoaded failed for ', instance);
                     });
+
+                window.reblogsKeys.push(results[i].reblog_key);
+
 
             };
 
@@ -220,6 +207,7 @@ function getPosts(o){
                 postsOffset += postItemCount;
 
                 setColumnHeights();
+                checkForDuplicates();
             };
         });
 
@@ -247,6 +235,22 @@ function setColumnHeights() {
         var f = $(b[d]);
         null == c ? (c = f.height(), smallestColumnOffset = f.children("div").last().offset().top + f.children("div").last().height() / 2) : c > f.height() && (c = f.height(), smallestColumnOffset = f.children("div").last().offset().top + f.children("div").last().height() / 2)
     }
+}
+
+function checkForDuplicates(){
+    var arr = window.reblogsKeys;
+    var sorted_arr = arr.sort(); // You can define the comparing function here. 
+    // JS by default uses a crappy string compare.
+    var results = [];
+    for (var i = 0; i < arr.length - 1; i++) {
+        if (sorted_arr[i + 1] == sorted_arr[i]) {
+            results.push(sorted_arr[i]);
+        }
+    }
+    
+    console.log("Duplicate reblog keys so far: ", results);
+    console.log("Duplicate length: ", results.length);
+
 }
 
 
