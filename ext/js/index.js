@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var
     //serverUrl = "http://velopedia.meteor.com/getposts",
-    serverUrl = "http://localhost:8081",
+    //serverUrl = "http://localhost:8081",
     //serverUrl = "http://velopedia-dev.elasticbeanstalk.com",
+    serverUrl = "",
 
     getPostTriggered = true,
     smallestColumnOffset,
