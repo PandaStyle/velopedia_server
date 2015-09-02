@@ -1,7 +1,6 @@
 window.reblogsKeys = [];
 
-var postsOffset = 0,
-    selectedRss = 0;
+var postsOffset = 0;
 
 NProgress.start();
 
@@ -20,15 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     $(window).on("scrollstart", function(){ $('body').addClass('disable-hover');});
     $(window).on("scrollstop", scrollHandler);
 
-
-
-    $('.header-icon').click(function(){
-        selectedRss += 1;
-        if(selectedRss == 4){
-            selectedRss = 0;
-        }
-        getNews(rss[Object.keys(rss)[selectedRss]]);
-    })
 
 });
 
@@ -75,7 +65,6 @@ function getNews(){
 
     spinner.fadeIn(100);
 
-
     $.ajax({
         type: "GET",
         url: serverUrl + "/getnews"
@@ -120,7 +109,7 @@ function getNews(){
 
             NProgress.inc();
             console.log("news append ready in " + ((new Date().getTime()) - (a.getTime()))+ "ms");
-        })
+        });
 }
 
 function getPosts(o){
@@ -155,10 +144,10 @@ function getPosts(o){
                 }
 
                 var item = $('<div class="box item">\
-                                <div class="overlay">\
+                                <a class="overlay" href="' + results[i].post_url + '" target="_blank">\
                                 <div class="lay"></div>\
                                 <i class="flaticon-logotype1 nameicon"></i> <span class="blogname">' + results[i].blog_name  + '</span> \
-                                </div>\
+                                </a>\
                                 <img src="' + url + '" alt=""/> \
                                 </div>');
 

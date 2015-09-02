@@ -18,11 +18,11 @@ header {
     z-index: 10;
     background-color: #fff;
     height: 70px;
-    border-bottom: 3px solid rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
     background-color: #DF6E53;
 }
 header .logo img{
-    height: 78px;
+    height: 70px;
     vertical-align: middle;
 }
 
@@ -213,6 +213,13 @@ header .buttons .icon-title {
 .cont .links .title {
     text-decoration: none;
     color: inherit;
+    -webkit-transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cont .links .title:hover {
+    color: #DF6E53;
+
 }
 
 .cont .links .url,
@@ -225,6 +232,10 @@ header .buttons .icon-title {
 .cont .links .time {
     margin-left: 10px;
 }
+.cont .links .url:hover {
+    color: #DF6E53;
+}
+
 
 .cont .site {
     opacity: 0.7;
